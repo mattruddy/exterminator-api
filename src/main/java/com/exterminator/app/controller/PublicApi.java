@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/public", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/public", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PublicApi {
 
-    @Autowired private AuthService authService;
+    private final AuthService authService;
+
+    @Autowired
+    public PublicApi(AuthService authService) {
+        this.authService = authService;
+    }
 
     // POST
     @PostMapping(value = "/signup")

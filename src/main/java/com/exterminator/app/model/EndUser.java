@@ -1,6 +1,7 @@
 package com.exterminator.app.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "end_user")
@@ -10,10 +11,10 @@ public class EndUser {
     @GeneratedValue
     private long id;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
@@ -25,6 +26,9 @@ public class EndUser {
 
     @Column
     private Boolean hasUsedTrail;
+
+    @Column
+    private Timestamp trailStart;
 
     public enum Role {
         USER,
@@ -58,6 +62,14 @@ public class EndUser {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Timestamp getTrailStart() {
+        return trailStart;
+    }
+
+    public void setTrailStart(Timestamp trailStart) {
+        this.trailStart = trailStart;
     }
 
     public Boolean getHasUsedTrail() {

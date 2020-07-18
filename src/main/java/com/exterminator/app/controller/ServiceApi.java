@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/secure", produces = MediaType.APPLICATION_JSON_VALUE)
-public class SecureApi {
+@RequestMapping(value = "/service", produces = MediaType.APPLICATION_JSON_VALUE)
 
-
-
+public class ServiceApi {
 }

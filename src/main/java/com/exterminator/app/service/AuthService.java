@@ -35,6 +35,8 @@ public class AuthService {
         EndUser endUser = new EndUser();
         endUser.setUsername(username);
         endUser.setPassDigest(passwordEncoder.encode(signUpRequest.getPassword()));
+        endUser.setHasUsedTrail(Boolean.FALSE);
+        endUser.setRole(EndUser.Role.USER);
         endUserRepo.save(endUser);
         return login(username, signUpRequest.getPassword());
     }

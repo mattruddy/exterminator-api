@@ -1,5 +1,6 @@
 package com.exterminator.app.config;
 
+import com.exterminator.app.model.EndUser;
 import com.exterminator.app.security.JwtTokenFilterConfigurer;
 import com.exterminator.app.security.JwtTokenProvider;
 import com.exterminator.app.security.UserIdentity;
@@ -31,12 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/service/**")
+                .hasRole(EndUser.Role.PAID.name())
                 .antMatchers("/secure/**")
-                .authenticated()
+                .hasRole(EndUser.Role.USER.name())
                 .antMatchers("/public/**")
                 .permitAll();
 
