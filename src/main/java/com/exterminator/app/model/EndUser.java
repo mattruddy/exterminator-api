@@ -32,7 +32,6 @@ public class EndUser {
 
     public enum Role {
         USER,
-        TRAIL,
         PAID
     }
 
